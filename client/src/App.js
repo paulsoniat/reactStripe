@@ -1,22 +1,16 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import QRScanner from './QRScanner'
 import NameForm from './NameForm';
 
+var TwitterRest = require('twitter-rest-api'),
+    fs = require('fs');
+ 
 class App extends Component {
   state = {
     response: ''
   };
-
-  //add a remember me here that sets the status of isloggedin through cookies
-
-//check islogged in on component will mount?
-
-//if so send them to homepage
-
-//if yes, send them to qr scan
-
-
   componentDidMount() {
     this.callApi()
       .then(res => this.setState({ response: res.express }))
@@ -39,8 +33,8 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">PeepADD</h1>
         </header>
-        <NameForm className="NameForm"></NameForm>
-        <p className="App-intro">{this.state.response}</p>
+        <QRScanner></QRScanner>
+        <NameForm></NameForm>
       </div>
     );
   }

@@ -15,9 +15,9 @@ class NameForm extends React.Component {
             password: '',
         };
 
-        this.handlePasswordChange = this.handlePasswordhange.bind(this);
+        this.handlePasswordChange = this.handlePasswordChange.bind(this);
         this.handleEmailChange = this.handleEmailChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleNewUser = this.handleNewUser.bind(this);
     }
 
     handlePasswordChange(event) {
@@ -41,7 +41,15 @@ class NameForm extends React.Component {
         axios.post('/loginUser', {email: this.state.email, password: this.state.password})
         .then((res) => {
             console.log(res, "this is user res");
-        })   
+        })  
+    } 
+
+        handleTweets(event) {
+            event.preventDefault();
+            axios.post('/tweetme')
+            .then((res) => {
+                console.log(res, "this is user res");
+            })   
     }
 
     /*
@@ -81,6 +89,8 @@ class NameForm extends React.Component {
                 </label>
                 <button onClick={this.handleExistingUser}> Login </button>
                 <button onClick={this.handleNewUser}> Create Account </button>
+
+                <button onClick={this.handleNewUser}> Create tweets </button>
             </div>
         );
     }
