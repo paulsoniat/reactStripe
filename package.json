@@ -17,8 +17,17 @@
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
+<<<<<<< HEAD
     "mongoose": "^5.1.1",
     "passport": "^0.4.0"
+=======
+    "jsonwebtoken": "^8.2.1",
+    "mongoose": "^5.1.1",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "react-qr-scanner": "0.0.7",
+    "twitter-rest-api": "^0.1.0"
+>>>>>>> [init] full stack bare bones]
   },
   "devDependencies": {
     "concurrently": "^3.5.1"

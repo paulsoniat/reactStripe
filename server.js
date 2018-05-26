@@ -43,6 +43,7 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
+
 app.post('/createUser', function (req, res) {
   const tokenData = {
     email: req.body.email,
