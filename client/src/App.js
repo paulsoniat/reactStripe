@@ -1,29 +1,13 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import QRScanner from './QRScanner'
+import TwitterMap from './TwitterMap';
 import NameForm from './NameForm';
 
-var TwitterRest = require('twitter-rest-api'),
-    fs = require('fs');
  
 class App extends Component {
   state = {
     response: ''
-  };
-  componentDidMount() {
-    this.callApi()
-      .then(res => this.setState({ response: res.express }))
-      .catch(err => console.log(err));
-  }
-
-  callApi = async () => {
-    const response = await fetch('/api/hello');
-    const body = await response.json();
-
-    if (response.status !== 200) throw Error(body.message);
-
-    return body;
   };
 
   render() {
@@ -31,10 +15,9 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">PeepADD</h1>
+          <h1 className="App-title">PeepAD</h1>
         </header>
-        <QRScanner></QRScanner>
-        <NameForm></NameForm>
+        <TwitterMap></TwitterMap>
       </div>
     );
   }
