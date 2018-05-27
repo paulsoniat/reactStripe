@@ -11,12 +11,9 @@ class App extends Component {
   };
 
   render() {
+    //this should have all the logic besides the tweets
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">PeepAD</h1>
-        </header>
         <TwitterMap></TwitterMap>
       </div>
     );
