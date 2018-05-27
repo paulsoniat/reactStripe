@@ -10,13 +10,20 @@ import {
 class TweetCarousel extends Component {
   constructor(props) {
     super(props);
-    this.state = { activeIndex: 0 };
+    this.state = { 
+      activeIndex: 0, 
+      trumpGQShots: ['https://upload.wikimedia.org/wikipedia/commons/3/36/Donald_Trump_and_Mike_Pence_-_Caricature.jpg', 'https://www.askideas.com/media/48/Donald-Trump-Funny-Smiling-Picture.jpg']
+    };
     this.next = this.next.bind(this);
     this.previous = this.previous.bind(this);
     this.goToIndex = this.goToIndex.bind(this);
     this.onExiting = this.onExiting.bind(this);
     this.onExited = this.onExited.bind(this);
   }
+
+  get_random = function (list) {
+    return list[Math.floor((Math.random()*list.length))];
+  } 
 
   onExiting() {
     this.animating = true;
@@ -46,7 +53,7 @@ class TweetCarousel extends Component {
   render() {
     const { activeIndex } = this.state;
 
-    const slides = this.props.tweets.map((item, index) => {
+    const slides = this.props.tweets.map((tweetInfo, index) => {
       return (
         <CarouselItem
           className="custom-tag"
@@ -54,8 +61,9 @@ class TweetCarousel extends Component {
           key={index}
           onExiting={this.onExiting}
           onExited={this.onExited}
+          style={`background-image:url(${tweetInfo.background})`}
         >
-          <CarouselCaption className="text-danger" captionText={item} captionHeader={item} />
+          <CarouselCaption className="text-danger" captionText={tweetInfo.quote} captionHeader={tweetInfo.tweet} />
         </CarouselItem>
       );
     });
@@ -67,8 +75,8 @@ class TweetCarousel extends Component {
             `.custom-tag {
                 max-width: 100%;
                 max-height: 100%;
-                height: 700px;
-                background: black;
+                height: 900px;
+                background-image: url(${this.get_random(this.state.trumpGQShots)});
               }`
           }
         </style>
