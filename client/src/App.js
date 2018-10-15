@@ -10,18 +10,12 @@ class App extends Component {
     response: ''
   };
 
-  sectionStyle = {
-    height: "800px",
-    width: "900px",
-
-    backgroundImage: `url(${gold})`
-  };
   render() {
     
     //this should have all the logic besides the tweets
     return (
       
-      <div className="App" style={this.sectionStyle}>
+      <div className="App">
         <TwitterMap></TwitterMap>
       </div>
     );

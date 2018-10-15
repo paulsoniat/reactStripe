@@ -54,11 +54,16 @@ app.get('/api/hello', (req, res) => {
 
 app.post('/tweetMe', (req, res) => {
   let tweets = [];
+  console.log("poop on me")
   T.get('statuses/user_timeline', options , function(err, data) {
     for (var i = 0; i < data.length ; i++) {
       tweets.push(data[i].full_text);
     }
+    if (err){
+      console.log(error, "this is err")
+    }
     res.send(tweets)
+
   })
 })
 

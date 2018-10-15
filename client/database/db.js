@@ -8,7 +8,7 @@ db.on('error', function () {
     console.log('mongoose connection error');
 });
 db.once('open', function () {
-    console.log('mongoose connected successfully');
+    console.log('mongoose connection successfull');
 });
 
 var userSchema = mongoose.Schema({

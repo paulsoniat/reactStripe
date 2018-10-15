@@ -6,7 +6,8 @@ import ScrollArea from 'react-scrollbar';
 import Flexbox from 'flexbox-react';
 import { Button } from 'reactstrap';
 import TweetCarousel from './TweetCarousel'
-import DonnyAndPence from './images/DonnyAndPence.jpg'
+import DonnyAndPence from './images/DonnyAndPence.jpg';
+import gold from './images/gold.jpg'
 
 class TwitterMap extends Component {
     constructor(props){
@@ -35,11 +36,14 @@ class TwitterMap extends Component {
         "Informants": "people doing their job",
         Crooked: "not as crooked as I am",
         failing: "Doing pretty well if i keep insulting them",
-        Obama: "Big Man Barack"
+        Obama: "Big Man Barack",
+        Trudeau: "poop man",
+        Mexico: "really southern US",
+        "Mexico's": "southern Texas'",
+        NBC: "Real news media"
+
     }
-
-    brilliantTrumpQuotes = ["No one is as hot as my daughter, shes a real 10 - Trump"];
-
+    
     truthisizeTweets (tweets) {
         let modifiedTweets = [];
         let modifiedTweet = [];
@@ -66,7 +70,7 @@ class TwitterMap extends Component {
         let carouselTweetObj = {};
             carouselTweetObj.tweet = currentItem;
             carouselTweetObj.index = currentIndex;
-            carouselTweetObj.quote = this.brilliantTrumpQuotes[0];
+            carouselTweetObj.quote = "";
             seed.push(carouselTweetObj)
             carouselTweetObj = {};
 
@@ -85,17 +89,23 @@ class TwitterMap extends Component {
     })
 }
 
+sectionStyle = {
+    height: "800px",
+    width: "900px",
+
+    backgroundImage: `url(${gold})`
+  };
 
   render() {
     if(!this.state.loaded) {
         return (
-            <div className="TwitterMap">
+            <div className="TwitterMap"   style={this.sectionStyle}>
                 <Button onClick={this.handleTweets} color="danger"> See Donny's Real Thoughts </Button>
             </div>
         );
     } else {
         return (
-            <TweetCarousel tweets={this.state.carouselTweets} backgrounds={this.trumpGQShots} />
+            <TweetCarousel tweets={this.state.carouselTweets} backgrounds={this.trumpGQShots}  />
         );
       }
     }
