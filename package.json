@@ -14,7 +14,8 @@
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
   },
   "dependencies": {
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "react-router-dom": "^4.3.1"
   },
   "devDependencies": {
     "concurrently": "^3.5.1"
