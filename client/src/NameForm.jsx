@@ -90,7 +90,7 @@ class NameForm extends React.Component {
                 <button onClick={this.handleExistingUser}> Login </button>
                 <button onClick={this.handleNewUser}> Create Account </button>
 
-                <button onClick={this.handleNewUser}> Create tweets </button>
+                <button onClick={this.handleTweets}> Create tweets </button>
             </div>
         );
     }

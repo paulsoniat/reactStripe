@@ -7,6 +7,16 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const app = express();
+const Twitter = require('twitter');
+ 
+var client = new Twitter({
+  consumer_key: process.env.ConsumerKey,
+  consumer_secret: process.env.ConsumerSecret,
+  access_token_key: process.env.AccessTokenKey,
+  access_token_secret: process.env.AccessTokenSecret
+});
+ 
+var params = {screen_name: 'realDonaldTrump'};
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -39,10 +49,18 @@ app.get('/api/hello', (req, res) => {
   res.send({ express: 'Hello From Express' });
 });
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../public/index.html'));
-});
-
+app.post('/tweetMe', (req, res) => {
+  console.log('buttmunch')
+  client.get('statuses/user_timeline', params, function(error, tweets, response) {
+    if (!error) {
+      console.log(tweets);
+    }
+    else {
+      (console.log(error, "this is error"))
+      (console.log(response, "this is res"))
+    }
+  });
+})
 
 app.post('/createUser', function (req, res) {
   const tokenData = {
@@ -93,6 +111,10 @@ app.post('/loginUser', function (req, res) {
     });
 
 })
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/index.html'));
+});
 
 
 
