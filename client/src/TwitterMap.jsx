@@ -13,6 +13,7 @@ class TwitterMap extends Component {
     constructor(props){
         super(props)
         this.state = {
+          poop : true,
           response: '',
           modifiedTweetsArray: [],
           carouselTweets: "",
@@ -40,7 +41,8 @@ class TwitterMap extends Component {
         Trudeau: "poop man",
         Mexico: "really southern US",
         "Mexico's": "southern Texas'",
-        NBC: "Real news media"
+        NBC: "Real news media",
+        NASA: "space force 1"
 
     }
     
@@ -90,13 +92,30 @@ class TwitterMap extends Component {
 }
 
 sectionStyle = {
-    height: "800px",
-    width: "900px",
-
+    height: "1200px",
+    width: "1200px",
+    flexbox: "true",
     backgroundImage: `url(${gold})`
   };
 
   render() {
+
+    if (this.state.poop = false) {
+        return (
+            <div class="wrapper">
+                <header class="page-header">
+                    <Button onClick={this.handleTweets} color="danger"> See Donny's Real Thoughts </Button>
+                </header>
+                <main class="page-main">
+                <Button onClick={this.handleTweets} color="danger"> See Donny's Real Thoughts </Button>
+                </main>
+                        <footer class="page-footer">
+                <Button onClick={this.handleTweets} color="danger"> See Donny's Real Thoughts </Button>
+                </footer>
+                </div>
+                
+        );
+    }
     if(!this.state.loaded) {
         return (
             <div className="TwitterMap"   style={this.sectionStyle}>
